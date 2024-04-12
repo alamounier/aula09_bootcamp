@@ -221,3 +221,4 @@ O Loguru oferece uma abordagem moderna e conveniente para logging em Python, sim
 
 Aplicar decorador de Log, Timer e Qualidade em nossa ETL
 
+# aula09_bootcamp
