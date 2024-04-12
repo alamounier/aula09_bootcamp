@@ -1,0 +1,142 @@
+2024-04-11T20:42:42.250599-0300 INFO Chamando função 'pipeline_calcular_kpi_de_vendas_consolidado' com args ('data', ['csv', 'parquet']) e kwargs {} log.py
+2024-04-11T20:42:42.251597-0300 INFO Chamando função 'extrair_dados' com args ('data',) e kwargs {} log.py
+2024-04-11T20:42:42.270974-0300 INFO Função 'extrair_dados' retornou             Produto    Categoria  Quantidade  Venda        Data
+0    Notebook Gamer  Eletrônicos           3   1500  2023-01-15
+1     Mouse Sem Fio  Eletrônicos          10     30  2023-01-15
+2  Teclado Mecânico  Eletrônicos           5    100  2023-01-15 log.py
+2024-04-11T20:42:42.274844-0300 INFO Chamando função 'calcular_kpi_de_total_de_vendas' com args (            Produto    Categoria  Quantidade  Venda        Data
+0    Notebook Gamer  Eletrônicos           3   1500  2023-01-15
+1     Mouse Sem Fio  Eletrônicos          10     30  2023-01-15
+2  Teclado Mecânico  Eletrônicos           5    100  2023-01-15,) e kwargs {} log.py
+2024-04-11T20:42:42.280810-0300 INFO Função 'calcular_kpi_de_total_de_vendas' retornou             Produto    Categoria  Quantidade  Venda        Data  Total
+0    Notebook Gamer  Eletrônicos           3   1500  2023-01-15   4500
+1     Mouse Sem Fio  Eletrônicos          10     30  2023-01-15    300
+2  Teclado Mecânico  Eletrônicos           5    100  2023-01-15    500 log.py
+2024-04-11T20:42:42.286376-0300 INFO Chamando função 'carregar_dados' com args (            Produto    Categoria  Quantidade  Venda        Data  Total
+0    Notebook Gamer  Eletrônicos           3   1500  2023-01-15   4500
+1     Mouse Sem Fio  Eletrônicos          10     30  2023-01-15    300
+2  Teclado Mecânico  Eletrônicos           5    100  2023-01-15    500, ['csv', 'parquet']) e kwargs {} log.py
+2024-04-11T20:42:42.292985-0300 ERROR Exceção capturada em 'carregar_dados': Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet. log.py
+Traceback (most recent call last):
+
+  File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\Projetos VScode\aulas_bootcamp\github\aula09_bootcamp\pipeline.py", line 6, in <module>
+    pipeline_calcular_kpi_de_vendas_consolidado(pasta_argumento,formato_saida)
+    │                                           │               └ ['csv', 'parquet']
+    │                                           └ 'data'
+    └ <function pipeline_calcular_kpi_de_vendas_consolidado at 0x0000017B3BE063E0>
+
+  File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\Projetos VScode\aulas_bootcamp\github\aula09_bootcamp\log.py", line 27, in wrapper
+    result = func(*args, **kwargs)
+             │     │       └ {}
+             │     └ ('data', ['csv', 'parquet'])
+             └ <function pipeline_calcular_kpi_de_vendas_consolidado at 0x0000017B3BE06340>
+
+  File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\Projetos VScode\aulas_bootcamp\github\aula09_bootcamp\etl.py", line 36, in pipeline_calcular_kpi_de_vendas_consolidado
+    carregar_dados(dados_transformados, formato_saida)
+    │              │                    └ ['csv', 'parquet']
+    │              └             Produto    Categoria  Quantidade  Venda        Data  Total
+    │                0    Notebook Gamer  Eletrônicos           3   1500  2...
+    └ <function carregar_dados at 0x0000017B3BE062A0>
+
+> File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\Projetos VScode\aulas_bootcamp\github\aula09_bootcamp\log.py", line 27, in wrapper
+    result = func(*args, **kwargs)
+             │     │       └ {}
+             │     └ (            Produto    Categoria  Quantidade  Venda        Data  Total
+             │       0    Notebook Gamer  Eletrônicos           3   1500  ...
+             └ <function carregar_dados at 0x0000017B3BDDF380>
+
+  File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\Projetos VScode\aulas_bootcamp\github\aula09_bootcamp\etl.py", line 30, in carregar_dados
+    df.to_parquet("dados.parquet")
+    │  └ <function DataFrame.to_parquet at 0x0000017B3B838A40>
+    └             Produto    Categoria  Quantidade  Venda        Data  Total
+      0    Notebook Gamer  Eletrônicos           3   1500  2...
+
+  File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\projetos VScode\aulas_bootcamp\github\aula09_bootcamp\.venv\Lib\site-packages\pandas\util\_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           │     │       └ {}
+           │     └ (            Produto    Categoria  Quantidade  Venda        Data  Total
+           │       0    Notebook Gamer  Eletrônicos           3   1500  ...
+           └ <function DataFrame.to_parquet at 0x0000017B3B838900>
+  File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\projetos VScode\aulas_bootcamp\github\aula09_bootcamp\.venv\Lib\site-packages\pandas\core\frame.py", line 3113, in to_parquet
+    return to_parquet(
+           └ <function to_parquet at 0x0000017B3BB40E00>
+  File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\projetos VScode\aulas_bootcamp\github\aula09_bootcamp\.venv\Lib\site-packages\pandas\io\parquet.py", line 476, in to_parquet
+    impl = get_engine(engine)
+           │          └ 'auto'
+           └ <function get_engine at 0x0000017B3BA0FE20>
+  File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\projetos VScode\aulas_bootcamp\github\aula09_bootcamp\.venv\Lib\site-packages\pandas\io\parquet.py", line 67, in get_engine
+    raise ImportError(
+
+ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+2024-04-11T20:42:42.331853-0300 ERROR Exceção capturada em 'pipeline_calcular_kpi_de_vendas_consolidado': Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet. log.py
+Traceback (most recent call last):
+
+  File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\Projetos VScode\aulas_bootcamp\github\aula09_bootcamp\pipeline.py", line 6, in <module>
+    pipeline_calcular_kpi_de_vendas_consolidado(pasta_argumento,formato_saida)
+    │                                           │               └ ['csv', 'parquet']
+    │                                           └ 'data'
+    └ <function pipeline_calcular_kpi_de_vendas_consolidado at 0x0000017B3BE063E0>
+
+> File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\Projetos VScode\aulas_bootcamp\github\aula09_bootcamp\log.py", line 27, in wrapper
+    result = func(*args, **kwargs)
+             │     │       └ {}
+             │     └ ('data', ['csv', 'parquet'])
+             └ <function pipeline_calcular_kpi_de_vendas_consolidado at 0x0000017B3BE06340>
+
+  File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\Projetos VScode\aulas_bootcamp\github\aula09_bootcamp\etl.py", line 36, in pipeline_calcular_kpi_de_vendas_consolidado
+    carregar_dados(dados_transformados, formato_saida)
+    │              │                    └ ['csv', 'parquet']
+    │              └             Produto    Categoria  Quantidade  Venda        Data  Total
+    │                0    Notebook Gamer  Eletrônicos           3   1500  2...
+    └ <function carregar_dados at 0x0000017B3BE062A0>
+
+  File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\Projetos VScode\aulas_bootcamp\github\aula09_bootcamp\log.py", line 27, in wrapper
+    result = func(*args, **kwargs)
+             │     │       └ {}
+             │     └ (            Produto    Categoria  Quantidade  Venda        Data  Total
+             │       0    Notebook Gamer  Eletrônicos           3   1500  ...
+             └ <function carregar_dados at 0x0000017B3BDDF380>
+
+  File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\Projetos VScode\aulas_bootcamp\github\aula09_bootcamp\etl.py", line 30, in carregar_dados
+    df.to_parquet("dados.parquet")
+    │  └ <function DataFrame.to_parquet at 0x0000017B3B838A40>
+    └             Produto    Categoria  Quantidade  Venda        Data  Total
+      0    Notebook Gamer  Eletrônicos           3   1500  2...
+
+  File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\projetos VScode\aulas_bootcamp\github\aula09_bootcamp\.venv\Lib\site-packages\pandas\util\_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           │     │       └ {}
+           │     └ (            Produto    Categoria  Quantidade  Venda        Data  Total
+           │       0    Notebook Gamer  Eletrônicos           3   1500  ...
+           └ <function DataFrame.to_parquet at 0x0000017B3B838900>
+  File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\projetos VScode\aulas_bootcamp\github\aula09_bootcamp\.venv\Lib\site-packages\pandas\core\frame.py", line 3113, in to_parquet
+    return to_parquet(
+           └ <function to_parquet at 0x0000017B3BB40E00>
+  File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\projetos VScode\aulas_bootcamp\github\aula09_bootcamp\.venv\Lib\site-packages\pandas\io\parquet.py", line 476, in to_parquet
+    impl = get_engine(engine)
+           │          └ 'auto'
+           └ <function get_engine at 0x0000017B3BA0FE20>
+  File "C:\Users\menlo\OneDrive\Área de Trabalho\Documentos\Pessoal\curso_analista_dados\projetos VScode\aulas_bootcamp\github\aula09_bootcamp\.venv\Lib\site-packages\pandas\io\parquet.py", line 67, in get_engine
+    raise ImportError(
+
+ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+2024-04-11T20:50:07.465842-0300 INFO Chamando função 'soma' com args (2, 3) e kwargs {} log.py
+2024-04-11T20:50:07.466876-0300 INFO Função 'soma' executada em 0.0000 segundos timer.py
+2024-04-11T20:50:07.466876-0300 INFO Função 'soma' retornou 5 log.py
+2024-04-11T20:54:08.457454-0300 INFO Função 'soma' executada em 2.0136 segundos timer.py
